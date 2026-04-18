@@ -40,7 +40,8 @@ public class APITest {
                 .get("auth/me")
                 .then()
                 .statusCode(200)
-                .log().all();
+                .body("data.email",org.hamcrest.Matchers.equalTo("super@admin.com"))
+                ;
 
     }
 }
