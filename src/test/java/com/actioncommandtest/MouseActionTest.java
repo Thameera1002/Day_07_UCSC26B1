@@ -28,9 +28,14 @@ public class MouseActionTest {
     }
 
     @Test
-    public void mouseHoverTest(){
+    public void mouseHoverTest() throws InterruptedException {
         WebDriver driver = WebDriverManager.chromedriver().create();
         driver.manage().window().maximize();
         driver.get("https://ecommerce-playground.lambdatest.io/");
+        WebElement myAccount = driver.findElement(By.xpath("(//span[normalize-space(text())='My account'])[2]"));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(myAccount).build().perform();
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//span[normalize-space(text())='Login']")).click();
     }
 }
